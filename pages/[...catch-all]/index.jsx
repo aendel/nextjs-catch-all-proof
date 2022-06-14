@@ -21,23 +21,15 @@ export async function getStaticProps({ params }) {
   };
 }
 
+export const catchAllRoutesData = [
+  { params: { "catch-all": ["One", "one"] } },
+  { params: { "catch-all": ["two-two"] } },
+  { params: { "catch-all": ["Three"] } },
+];
+
 export async function getStaticPaths() {
-  const data = [
-    {
-      'catch-all': 'One/one',
-    },
-    {
-      'catch-all': 'two-two',
-    },
-    {
-      'catch-all': 'Three',
-    },
-  ];
   return {
-    paths:
-      data?.map((b) => ({
-        params: { 'catch-all': b['catch-all'].split('/') },
-      })) || [],
+    paths: catchAllRoutesData,
     fallback: false,
   };
 }
