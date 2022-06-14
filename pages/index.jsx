@@ -3,7 +3,6 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { catchAllRoutesData } from "./[...catch-all]";
 import { slugRoutesData } from "./[slug]";
-import { slugDeepRoutesData } from "./[slug]/[deep]";
 import React from "react";
 
 const LinkAnchorComponent = ({ href }) => (
@@ -46,14 +45,6 @@ export default function Home() {
             <h1>SLUG</h1>
             {slugRoutesData.map((sr) => (
               <LinkAnchorComponent href={sr.params.slug} />
-            ))}
-          </div>
-          <div>
-            <h1>SLUG DEEP</h1>
-            {slugDeepRoutesData.map((sdr) => (
-              <LinkAnchorComponent
-                href={`${sdr.params.slug}/${sdr.params.deep}`}
-              />
             ))}
           </div>
         </div>
