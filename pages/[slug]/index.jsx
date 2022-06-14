@@ -20,20 +20,15 @@ export async function getStaticProps({ params }) {
   };
 }
 
+export const slugRoutesData = [
+  { params: { slug: "four" } },
+  { params: { slug: "five" } },
+  { params: { slug: "six" } },
+];
+
 export async function getStaticPaths() {
-  const data = [
-    {
-      slug: 'Four',
-    },
-    {
-      slug: 'Five',
-    },
-    {
-      slug: 'Six',
-    },
-  ];
   return {
-    paths: data?.map((b) => `/${b.slug}`) || [],
+    paths: slugRoutesData,
     fallback: false,
   };
 }
