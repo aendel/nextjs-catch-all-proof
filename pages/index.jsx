@@ -4,6 +4,24 @@ import Link from "next/link";
 import { catchAllRoutesData } from "./[...catch-all]";
 import { slugRoutesData } from "./[slug]";
 import { slugDeepRoutesData } from "./[slug]/[deep]";
+import React from "react";
+
+const LinkAnchorComponent = ({ href }) => (
+  <div className={styles.grid_2} key={href}>
+    <Link href={href} passHref>
+      <a>
+        <p>
+          {"with <Link> component"} {href}
+        </p>
+      </a>
+    </Link>
+    <a href={href}>
+      <p>
+        {"with <a> tag"} {href}
+      </p>
+    </a>
+  </div>
+);
 
 export default function Home() {
   return (
@@ -21,31 +39,21 @@ export default function Home() {
           <div>
             <h1>CATCH ALL</h1>
             {catchAllRoutesData.map((cr) => (
-              <Link href={cr.params["catch-all"].join("/")} passHref>
-                <a>
-                  <p>{cr.params["catch-all"].join("/")}</p>
-                </a>
-              </Link>
+              <LinkAnchorComponent href={cr.params["catch-all"].join("/")} />
             ))}
           </div>
           <div>
             <h1>SLUG</h1>
             {slugRoutesData.map((sr) => (
-              <Link href={sr.params.slug} passHref>
-                <a>
-                  <p>{sr.params.slug}</p>
-                </a>
-              </Link>
+              <LinkAnchorComponent href={sr.params.slug} />
             ))}
           </div>
           <div>
             <h1>SLUG DEEP</h1>
             {slugDeepRoutesData.map((sdr) => (
-              <Link href={`${sdr.params.slug}/${sdr.params.deep}`} passHref>
-                <a>
-                  <p>{`${sdr.params.slug}/${sdr.params.deep}`}</p>
-                </a>
-              </Link>
+              <LinkAnchorComponent
+                href={`${sdr.params.slug}/${sdr.params.deep}`}
+              />
             ))}
           </div>
         </div>

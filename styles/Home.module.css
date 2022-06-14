@@ -73,11 +73,16 @@
 
 .grid {
   display: grid;
-    place-items: center;
+  place-items: center;
     grid-template-columns: 1fr 1fr 1fr;
   margin-top: 3rem;
 }
 
+.grid_2 {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+}
 .card {
   margin: 1rem;
   flex-basis: 45%;
